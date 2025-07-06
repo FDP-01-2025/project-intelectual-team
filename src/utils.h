@@ -10,6 +10,12 @@ void clearScreen() {
     system("cls");
 #else
     system("clear");
-}
 #endif
+}
+
+void pause(float seconds) {
+    time_t start = time(nullptr);
+    while (time(nullptr) - start < seconds) {}
+}
+
 #endif
