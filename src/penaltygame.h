@@ -14,7 +14,7 @@ void takePenalty(Player &player, int difficulty) {
     int chosenNumber, keeperNumber;
 
     clearScreen();
-    drawShooter();3
+    drawShooter();
     cout << "\n" << player.name << ", elige un numero del 1 al " << difficulty << " para disparar: ";
     cin >> chosenNumber;
 
@@ -35,7 +35,7 @@ void takePenalty(Player &player, int difficulty) {
 
     
     if (chosenNumber == keeperNumber) {
-        cout << "¡Atajadón del portero! El publico se vuelve loco.\n";
+        cout << "¡Atajadon del portero! El publico se vuelve loco.\n";
     } else {
         cout << "¡GOOOOOOL de " << player.name << "! El estadio ruge de emocion.\n";
         player.goals++;
@@ -71,6 +71,31 @@ void startPenaltyGame() {
         takePenalty(p1, difficulty);
         takePenalty(p2, difficulty);
         round++;
-    }}
+    }
+// Empate: muerte súbita
+    while (p1.goals == p2.goals) {
+        clearScreen();
+        printDivider();
+        cout << " EMPATE... ¡Muerte subita!\n";
+        printDivider();
+        takePenalty(p1, 20);
+        takePenalty(p2, 20);
+    }
 
-    #endif
+    clearScreen();
+    printDivider();
+    cout << "RESULTADO FINAL:\n";
+    cout << p1.name << ": " << p1.goals << " goles\n";
+    cout << p2.name << ": " << p2.goals << " goles\n";
+    printDivider();
+
+    if (p1.goals > p2.goals)
+        cout << "¡" << p1.name << " se lleva la victoria!\n";
+    else
+        cout << " ¡" << p2.name << " se lleva la victoria!\n";
+
+    pause(3);
+}
+
+#endif
+
