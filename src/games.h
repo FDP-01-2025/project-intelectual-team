@@ -35,9 +35,9 @@ void takePenalty(Player &player, int difficulty) {
     cout << "\nTu numero: " << chosenNumber << " | Portero eligio: " << keeperNumber << "\n";
 
     if (chosenNumber == keeperNumber) {
-        cout << "¡Atajadon del portero! El publico se vuelve loco.\n";
+        cout << "¡Atajadon del portero! .... El publico se vuelve loco.\n";
     } else {
-        cout << "¡GOOOOOOL de " << player.name << "! El estadio ruge de emocion.\n";
+        cout << "¡GOOOOOOL de " << player.name << "... ! El estadio ruge de emocion.\n";
         player.goals++;
     }
 
