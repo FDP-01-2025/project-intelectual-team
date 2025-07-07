@@ -21,7 +21,7 @@ El juego de carreras, este juego se trata de que dos jugadores estan compitiendo
 2. **Nombre completo:** [Brandon David Alvarado Arevalo]  
    **Carnet:** [00109425]
 
-3. **Nombre completo:** [Rene Daniel Franco Arguta]  
+3. **Nombre completo:** [René Daniel Franco Argueta]  
    **Carnet:** [00246325]
 
 (Agregar más integrantes si es necesario)
