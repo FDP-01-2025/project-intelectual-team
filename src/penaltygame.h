@@ -7,7 +7,43 @@
 #include "player.h"
 #include "utils.h"
 #include "deco.h"
+//LLamado a las librerias ".h" que complementan el juego
 using namespace std;
+
+void takePenalty(Player &player, int difficulty) {
+    int chosenNumber, keeperNumber;
+
+    clearScreen();
+    drawShooter();3
+    cout << "\n" << player.name << ", elige un numero del 1 al " << difficulty << " para disparar: ";
+    cin >> chosenNumber;
+
+    while (chosenNumber < 1 || chosenNumber > difficulty) {
+        cout << "Ese numero no es valido. Intenta de nuevo: ";
+        cin >> chosenNumber;
+    }
+
+    keeperNumber = rand() % difficulty + 1;
+//Generar un numero aleatorio
+    clearScreen();
+    cout << "\n" << player.name << " toma carrera...\n";
+    pause(1);
+    shootBallAnimation();
+    drawGoalkeeper();
+
+    cout << "\nTu numero: " << chosenNumber << " | Portero eligio: " << keeperNumber << "\n";
+
+    
+    if (chosenNumber == keeperNumber) {
+        cout << "¡Atajadón del portero! El publico se vuelve loco.\n";
+    } else {
+        cout << "¡GOOOOOOL de " << player.name << "! El estadio ruge de emocion.\n";
+        player.goals++;
+    }
+
+    pause(2);
+}
+
 void startPenaltyGame() {
     srand(time(nullptr));
     Player p1, p2;
@@ -22,7 +58,7 @@ void startPenaltyGame() {
     cin >> p1.name;
     cout << "Jugador 2, ingresa tu nombre: ";
     cin >> p2.name;
-
+//Funcion para que las rondas maximas sean 5
     const int MAX_ROUNDS = 5;
     int round = 1;
 
@@ -36,34 +72,5 @@ void startPenaltyGame() {
         takePenalty(p2, difficulty);
         round++;
     }}
-    
-    void takePenalty(Player &player, int difficulty) {
-    int chosenNumber, keeperNumber;
-//Declarar variables
-    clearScreen();
-    drawShooter();
-    cout << "\n" << player.name << ", elige un numero del 1 al " << difficulty << " para disparar: ";
-    cin >> chosenNumber;
 
-    while (chosenNumber < 1 || chosenNumber > difficulty) {
-        cout << "Ese numero no es valido. Intenta de nuevo: ";
-        cin >> chosenNumber;
-    }
-
-    keeperNumber = rand() % difficulty + 1;
-
-    clearScreen();
-    cout << "\n" << player.name << " toma carrera...\n";
-    pause(1);
-    shootBallAnimation();
-    drawGoalkeeper();
-
-    cout << "\nTu numero: " << chosenNumber << " | Portero elige: " << keeperNumber << "\n";
-
-    if (chosenNumber == keeperNumber) {
-        cout << "X ¡Atajadon del portero! El publico se vuelve loco.\n";
-    } else {
-        cout << "¡GOOOOOOL de " << player.name << "! El estadio ruge de emocion.\n";
-        player.goals++;
-    }}
-#endif
+    #endif
